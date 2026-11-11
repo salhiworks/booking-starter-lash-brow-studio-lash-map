@@ -1,0 +1,263 @@
+/*
+ * Taper Lash & Brow — design tokens (Lash Map).
+ * The ONLY file with raw colours, fonts, sizes and spacing.
+ *
+ * The idea: a lash artist's working sheet. Porcelain pages like the white treatment
+ * room, kohl-black ink (the gloves, the tweezers, the lash itself) for type and the one
+ * action colour, warm stone for quiet panels and a kohl band for the moments of care.
+ * The photographs carry the colour — skin, daylight, one cobalt spoolie. The one
+ * ornament is the lash map: fine line drawings of the lid line and its lashes (or a
+ * brow and its three measured points) that explain what each treatment does.
+ * Funnel Display (light, sculpted terminals) for headings, names and figures;
+ * Funnel Sans for text; Geist Mono for the technician's labels: times, prices, lengths.
+ *
+ * Token names are shared with the other Niche Pack starters (so booking.css reads
+ * the same everywhere); the comments say what each one is here.
+ */
+:root {
+  /* ── Colour ─────────────────────────────────────────────── */
+  --paper: #f6f3ef;          /* porcelain — the page */
+  --raised: #fdfcfa;         /* white — inputs, the booking sheet, choices */
+  --oat: #ece6de;            /* stone — "where to begin", the booking summary */
+  --oat-deep: #ddd5ca;       /* frames while loading, skeletons */
+  --sage-100: #f0ebe4;       /* quiet highlights */
+  --sage-200: #e3dbd1;       /* tags, done steps */
+  --rule: #ddd5cb;           /* hairlines (decorative) */
+  --line-input: #75695f;     /* input and icon-button borders (≥ 3:1 on limewash, stone and white) */
+  --line-soft: #bcb1a5;      /* borders of choice buttons named by their own text */
+  --mark: #2f6b4a;           /* the "open" dot (≥ 3:1) */
+  --ink: #17130f;            /* kohl — 17:1 on porcelain */
+  --ink-soft: #3a332d;       /* 11:1 */
+  --muted: #6a5f56;          /* ≈5.6:1 on porcelain, 5:1 on stone */
+  --clay: #a3261b;           /* errors only (with an icon or words, never colour alone) */
+  --ply: #c4c0b5;            /* decorative only (rules, the sheet's edge) */
+  --honey-wash: #f0ede6;
+  --scrim: rgb(28 29 27 / 0.08);
+  --veil: rgb(22 26 24 / 0.6); /* the page behind the booking sheet */
+  --clay-wash: color-mix(in oklab, var(--clay) 6%, var(--raised));
+  --mark-halo: color-mix(in oklab, var(--mark) 22%, transparent);
+
+  /* Kohl: the patch test & aftercare band, the booking sheet's header and the footer (never owner-editable). */
+  --forest: #191512;         /* kohl band */
+  --forest-2: #231e1a;       /* a raised panel */
+  --forest-3: #2e2823;       /* a lifted panel, hover */
+  --on-forest: #f3eee8;      /* 15:1 on charcoal green */
+  --on-forest-soft: #d4ccc3; /* 11.5:1 */
+  --on-forest-faint: #a99d92; /* 7:1 — small print on charcoal only */
+  --forest-line: #3d352f;    /* decorative rules on charcoal */
+  --forest-line-strong: #5e544b;
+  --light: #ffffff;
+
+  /* Owner-editable (brand.accent) — set on <html> at run time.
+     A DEEP colour that carries white text (the editor checks any new colour at 4.5:1
+     against white): buttons, the italic highlight, selected choices, state edges. */
+  --accent: #17130f;
+  --accent-strong: color-mix(in oklab, var(--accent) 86%, #000);
+  --accent-deep: color-mix(in oklab, var(--accent) 66%, #000);
+  --accent-tint: color-mix(in oklab, var(--accent) 14%, var(--raised));
+  --accent-wash: color-mix(in oklab, var(--accent) 6%, var(--raised));
+  --on-accent: #ffffff;      /* white on bottle green, ≈10:1 */
+  --on-accent-soft: #e9e3dc;
+  /* On limewash the brand colour reads as text and as a state edge itself. */
+  --accent-text: var(--accent);
+  --accent-edge: var(--accent);
+  --accent-line: var(--accent-deep);
+  --focus: var(--accent);
+  /* The brand colour on charcoal: a pale sage made from it, so highlights and focus read (≥ 4.5:1). */
+  --accent-glow: #e9dfd3;
+
+  /* Kept for the shared booking styles (the scaffold's ornament tokens). */
+  --sight-color: var(--ink);
+  --sight-w: 2.75rem;        /* in a section mark */
+  --sight-tick: 0.5625rem;   /* the end ticks' height */
+  --sight-rule: 1px;
+  /* Kept for the shared booking styles: the foot of the sheet's header — the brand colour as a fine rule. */
+  --staff-height: 3px;
+  --staff: linear-gradient(90deg, var(--accent-glow) 0 100%);
+  --staff-on-dark: var(--staff);
+  --ticks-on-dark: var(--staff);
+  --tick-tall: var(--staff-height);
+  --marker-bar: 0.375rem;
+
+  /* ── Type ───────────────────────────────────────────────── */
+  --font-display: 'Funnel Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-text: 'Funnel Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans-display: 'Funnel Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --text-micro: 0.75rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.06rem + 0.3vw, 1.3125rem);
+  --text-xl: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --text-2xl: clamp(2.375rem, 1.7rem + 2.6vw, 3.875rem);
+  --text-3xl: clamp(2.75rem, 1.6rem + 4.4vw, 5.5rem);
+  --text-hero: clamp(2.75rem, 1.55rem + 4vw, 5.25rem);
+  --text-statement: clamp(1.625rem, 1.25rem + 1.5vw, 2.5rem);
+  --text-numeral: clamp(2.25rem, 1.8rem + 1.8vw, 3.25rem);
+  --text-code: clamp(1.875rem, 1.6rem + 1.2vw, 2.375rem);
+  --text-step: clamp(1.75rem, 1.5rem + 0.8vw, 2.25rem);  /* a booking step's heading */
+  --text-sheet: clamp(1.375rem, 1.25rem + 0.4vw, 1.625rem); /* the booking sheet's title */
+  --text-service: clamp(1.5rem, 1.35rem + 0.6vw, 1.875rem);
+  --text-price: clamp(1.5rem, 1.32rem + 0.6vw, 1.875rem);
+  --text-fact: clamp(1.3125rem, 1.2rem + 0.4vw, 1.5625rem);
+  --text-wordmark: clamp(1.75rem, 1.6rem + 0.55vw, 2.125rem);
+  --text-footer-name: clamp(3.5rem, 1.8rem + 6vw, 7.5rem);
+  --text-card: clamp(1.375rem, 1.25rem + 0.4vw, 1.625rem);
+  --text-step-n: clamp(2rem, 1.7rem + 1vw, 2.75rem); /* step numbers 01–06 */
+
+  --leading-display: 0.98;
+  --leading-heading: 1.04;
+  --leading-body: 1.65;
+  --leading-tight: 1.25;
+
+  --tracking-display: -0.035em;
+  --tracking-eyebrow: 0.18em;
+  --tracking-button: 0.02em;
+  --tracking-code: 0.42em;
+  --tracking-tag: 0.12em;
+  --tracking-wordmark: 0.01em;
+  --tracking-mono: 0.02em;
+
+  --weight-text: 400;
+  --weight-strong: 500;
+  --weight-medium: 500;
+  --weight-display: 300;   /* Funnel Display Light */
+  --weight-sans-display: 400;
+
+  /* No width axis; kept for the shared booking styles. */
+  --stretch-display: 100%;
+  --stretch-label: 100%;
+  --stretch-text: 100%;
+
+  /* Heading style (brand.headings): serif (default) | sans */
+  --heading-font: var(--font-display);
+  --heading-weight: var(--weight-display);
+  --heading-stretch: var(--stretch-display);
+  --heading-tracking: var(--tracking-display);
+  --heading-light-weight: var(--weight-display);
+
+  --measure: 62ch;
+  --measure-lede: 42ch;
+  --measure-title: 14ch;
+
+  /* ── Space ──────────────────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8.5rem;
+
+  --gutter: clamp(1rem, 4.5vw, 4.5rem);
+  --section-pad: clamp(4.5rem, 2.4rem + 6.4vw, 8.5rem);
+  --desk-pad: clamp(var(--space-5), 4vw, var(--space-8));
+  --page-max: 84rem;
+  --header-height: 4.5rem;
+  --sheet-width: 60rem;      /* the booking sheet from 960 px */
+
+  /* ── Sizes ──────────────────────────────────────────────── */
+  --tap: 2.75rem;            /* 44 px — the smallest tap target */
+  --control: 3.25rem;        /* 52 px — buttons */
+  --input: 3rem;             /* 48 px — inputs in the booking sheet */
+  --chip: 2.75rem;           /* 44 px — time chips (the smallest tap target) */
+  --day-cell: 2.75rem;       /* 44 px — month grid cells */
+  --day-card-w: 4rem;        /* 64 px — phone day rail */
+  --day-card-h: 5.25rem;     /* 84 px */
+  --dot: 0.3125rem;          /* 5 px — the "open" mark */
+  --drop: 0.75rem;           /* 12 px */
+  --edge: 3px;               /* the brand-colour edge under the booking sheet's header */
+  --hairline: 1px;
+  --rule-strong: 2px;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+  --logo-height: 1.875rem;
+  --logo-max: 11rem;
+  --summary-width: 17rem;
+  --time-min: 6rem;          /* a time chip's narrowest width */
+  --label-col: 7rem;
+  --form-max: 34rem;
+  --code-width: 15rem;
+  --code-height: 4rem;
+  --sticky-offset: 6rem;     /* room above a step heading for the phone summary strip */
+  --kind-aside: 16rem;       /* a kind's title column in the price list */
+  --figure-w: 8.5rem;        /* a row's length / price column */
+  --service-thumb: 4rem;
+  --hero-photo-max: calc(100svh - var(--header-height) - var(--space-7)); /* the first screen's photo, desktop */
+  --status-dot: 0.5rem;
+  --skeleton-block: 20rem;
+  --skeleton-times: 9rem;
+
+  /* ── Shape ──────────────────────────────────────────────── */
+  /* Drawn, not moulded: crisp controls, square photographs. */
+  --radius-0: 0;
+  --radius-1: 2px;           /* inputs, chips, small controls */
+  --radius-2: 3px;           /* the booking sheet, cards */
+  --radius-photo: 0;         /* photographs: square */
+  --radius-button: 1px;      /* buttons: crisp rectangles */
+  --radius-nail: 50%;        /* round marks (kept name: shared booking styles) */
+  --radius-pill: 999px;
+  --shadow-soft: 0 -0.5rem 1.5rem var(--scrim);
+  --shadow-top: 0 0.5rem 1.5rem var(--scrim);
+  --shadow-print: 0 1.25rem 2.5rem -1.25rem rgb(28 29 27 / 0.28);
+  --shadow-sheet: -1.5rem 0 4rem rgb(28 29 27 / 0.26);
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --dur-quick: 160ms;
+  --dur-step: 280ms;
+  --dur-enter: 700ms;
+  --dur-photo: 1100ms;
+  --dur-sheet: 420ms;
+  --stagger: 80ms;
+  --dur-shimmer: 1600ms;
+  --dur-spin: 900ms;
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --rise: 0.75rem;
+  --settle-scale: 1.03;
+
+
+  /* ── Lash Map sections ──────────────────────── */
+  --taupe: #6f5b4c;          /* brow taupe — mono labels: 5.8:1 on porcelain, 5.2:1 on stone */
+  --text-display: clamp(2.5rem, 0.4rem + 5.2vw, 6rem);   /* the first screen */
+  --text-h2: clamp(2.125rem, 1.2rem + 3vw, 4.25rem);
+  --text-group: clamp(2.25rem, 1.6rem + 2vw, 3.5rem);
+  --text-name: clamp(1.375rem, 1.2rem + 0.55vw, 1.75rem);
+  --text-figure: clamp(1.25rem, 1.12rem + 0.45vw, 1.5625rem);
+  --text-label: 0.75rem;
+  --tracking-label: 0.06em;
+  --header-bar: 4.25rem;
+  --diagram-w: 4.5rem;
+  --hero-photo-min: 17rem;
+  --kohl-photo-ratio: 4 / 5;
+
+  /* ── Layers ─────────────────────────────────────────────── */
+  --layer-sticky: 5;
+  --layer-banner: 10;
+  --layer-header: 8;
+}
+
+:root[data-headings='sans'] {
+  --heading-font: var(--font-sans-display);
+  --heading-weight: var(--weight-sans-display);
+  --heading-light-weight: var(--weight-sans-display);
+  --heading-tracking: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-quick: 1ms;
+    --dur-step: 1ms;
+    --dur-enter: 1ms;
+    --dur-photo: 1ms;
+    --dur-sheet: 1ms;
+    --stagger: 0ms;
+    --rise: 0px;
+    --settle-scale: 1;
+  }
+}

@@ -1,0 +1,10 @@
+/*
+ * The packaged dashboard keeps its own design. The site brands it with one
+ * thing — its accent, per appearance (INTEGRATION.md §10). Lash Map's action
+ * colour is kohl black carrying white text, so Light uses it as is; on the dark
+ * dashboard a black fill would vanish, so Dark uses a pale brow-taupe with kohl
+ * text. Owner monogram, primary buttons, Confirm, focus rings, selection and the
+ * schedule's "now" line all follow it.
+ */
+:root .pbe-admin[data-mode='light'] { --pbe-accent: #17130f; --pbe-accent-text: #ffffff; } /* ≈18:1 white on kohl; ≈18:1 on white */
+:root .pbe-admin[data-mode='dark']  { --pbe-accent: #e4d6c7; --pbe-accent-text: #17130f; } /* ≈13:1 on a near-black dashboard; kohl text ≈14:1 */
