@@ -3,6 +3,7 @@ import { roleOf } from '../../lib/services';
 import { formatClockTime, formatDate, timeZoneLabel } from '@profitstudio/booking-engine';
 import type { BookingConfirmation, Business, Service } from '@profitstudio/booking-engine';
 import { ContactInstead } from './ContactInstead';
+import { INACTIVE_TITLE, answerOf, inactiveNext } from '../../lib/bookingStatus';
 
 export type Outcome =
   | { kind: 'booked'; confirmation: BookingConfirmation; email: string }
@@ -53,7 +54,22 @@ export function Done({ outcome, business, service = null, headingRef, onAgain }:
   }
 
   const { confirmation, email } = outcome;
-  const pending = confirmation.status === 'pending';
+  // Only 'confirmed' is booked and only 'pending' is a request; the flow never brings anything else here.
+  const answer = answerOf(confirmation);
+  if (answer === 'inactive') {
+    return (
+      <div className="done">
+        <h2 className="step-title" tabIndex={-1} ref={headingRef} data-step-heading="">
+          {INACTIVE_TITLE}
+        </h2>
+        <ContactInstead business={business} title="Contact us" text={inactiveNext(confirmation.reference)} />
+        <button type="button" className="button button--quiet" onClick={onAgain}>
+          Choose a new time
+        </button>
+      </div>
+    );
+  }
+  const pending = answer === 'pending';
   const { locale } = business;
   return (
     <div className="done">

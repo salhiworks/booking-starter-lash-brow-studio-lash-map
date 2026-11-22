@@ -5,7 +5,7 @@ import type { Service } from '@profitstudio/booking-engine';
  * The studio's treatment menu: its groups (Lashes · Brows · Together · the patch test), the lash-map
  * drawing each row shows, how long a result usually lasts, and honest length and price terms.
  *
- * The engine (2.0.0-beta.3) has no service categories and no per-service metadata, and a service's id
+ * The engine (2.0.0-beta.4) has no service categories and no per-service metadata, and a service's id
  * is a database UUID this site cannot know when it is built — so everything is read from the
  * service's own engine data:
  *
