@@ -5,7 +5,7 @@ A one-page booking website for an independent lash and brow artist, shipped as *
 lash lift & tint, a lash tint, brow mapping & shaping, shape & tint, brow lamination, a lift &
 lamination combination and a free patch test) for the owner to make their own. Its identity lives in
 `src/site.config.ts`; `CUSTOMIZE.md` is the prompt that personalizes it. Built around
-**@profitstudio/booking-engine** **2.0.0-beta.4** (pinned; lock in `booking-engine.lock.json`). The
+**@profitstudio/booking-engine** **2.0.0** (pinned; lock in `booking-engine.lock.json`). The
 engine owns booking; this project owns the public design.
 
 Read before changing anything:
